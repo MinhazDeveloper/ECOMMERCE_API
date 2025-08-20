@@ -10,8 +10,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('product', ProductController::class);
+// Route::apiResource('product', ProductController::class);
 
-Route::group(['prefix'=>'prdct'],function(){
-    Route::apiResource('/{product}/reviews',ReviewsController::class);
-});
+// Route::group(['prefix'=>'prdct'],function(){
+//     Route::apiResource('/{product}/reviews',ReviewsController::class);
+// });
+Route::get('/products',[ProductController::class,'index']);
+Route::get('/products-list/{product}',[ProductController::class,'show']);
